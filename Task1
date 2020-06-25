@@ -1,0 +1,68 @@
+import csv
+with open('texts.csv', 'r') as f:
+    reader = csv.reader(f)
+    texts = list(reader)
+
+with open('calls.csv', 'r') as f:
+    reader = csv.reader(f)
+    calls = list(reader)
+
+telephonesList = [];
+for t1 in range(len(texts)):
+    telephonesList.append(texts[t1]);
+
+for t2 in range(len(texts)):
+    telephonesList.append(texts[t2][1]);
+
+for c1 in range(len(calls)):
+    telephonesList.append(calls[c1]);
+
+for c2 in range(len(calls)):
+    telephonesList.append(calls[c2][1]);
+
+if telephonesList[0][1] == telephonesList[165][1]:
+    print("ttt")
+
+    
+    
+def isNumberExistsInListA(number):
+    
+    for i in listA:
+        if number == i:
+            return True;
+            
+    return False;
+        
+        
+def isNumberExistsInListB(number):
+    
+    for i in listB:
+        if number == i:
+            return True;
+            
+    return False;
+
+
+
+listA = [];
+listB = [];
+numOfDifferences = 0;
+flagA = False;
+flagB = False;
+
+for i in telephonesList:
+    
+    flagA = isNumberExistsInListA(i);
+    flagB = isNumberExistsInListB(i);
+    
+    if flagA == False and flagB == False:
+        listA.append(i);
+        numOfDifferences +=1;
+        
+    elif flagA == True and flagB == False:
+        listA.remove(i);
+        listB.append(i);
+        numOfDifferences -=1;
+        
+
+print(numOfDifferences);
